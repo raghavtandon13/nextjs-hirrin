@@ -25,7 +25,9 @@ const Navbar = () => {
             <ThemeSwitch />
 
             <Link href="/signin">
-              <Button variant={"outline"}>Login</Button>
+              <Button variant={"outline"}>
+                Login
+              </Button>
             </Link>
             <Button variant={"outline"}>Register</Button>
             <Button variant={"outline"}>Employer Login</Button>
@@ -48,7 +50,7 @@ const Navbar = () => {
           </div>
           <div className="flex flex-col items-stretch justify-start w-full h-full p-10 gap-4 ">
             <Link href="/signin">
-              <Button variant={"outline"}>Login</Button>
+              <Button size={"full"} variant={"outline"}>Login</Button>
             </Link>
             <Button variant={"outline"}>Register</Button>
             <Button variant={"outline"}>Employer Login</Button>
