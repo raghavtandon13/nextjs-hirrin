@@ -3,6 +3,7 @@ import img from "@/assests/pleaseBePatient.png";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -14,9 +15,11 @@ export default function Home() {
         <h1 className="font-clash font-black text-[40px] text-center text-gray-800 lg:text-[8vh]">is Waiting</h1>
         <h1 className="font-clash font-black text-[40px] text-center text-gray-800 lg:text-[8vh]">For You</h1>
         <div className="flex gap-2">
+          <Link href="/signin">
           <Button size={"lg"} variant={"outline"}>
             Login In
           </Button>
+          </Link>
           <Button size={"lg"} variant={"outline"}>
             Register
           </Button>
