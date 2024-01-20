@@ -18,7 +18,7 @@ const page = () => {
   return (
     <div className="absolute opacity-85 w-screen bg-black h-screen overflow-hidden">
       <div className="w-full h-full flex flex-col items-center justify-center">
-        <div className="bg-gray-100 border-gray-300 rounded-md ">
+        <div className="bg-gray-100 border-gray-300 rounded-md">
           <div className="w-full flex items-center justify-end p-2">
             <CloseModal />
           </div>

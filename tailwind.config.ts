@@ -73,6 +73,14 @@ const config = {
         "slide-in-right": "slideInRight 1s ease-out",
       },
     },
+    fontFamily: {
+      'sans': ['ui-sans-serif', 'system-ui'],
+      'serif': ['ui-serif', 'Georgia'],
+      'mono': ['ui-monospace', 'SFMono-Regular'],
+      'display': ['Oswald'],
+      'body': ['"Open Sans"'],
+      'clash': ['"Clash Display"'],
+    }
   },
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;

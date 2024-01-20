@@ -3,6 +3,11 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
+// import Head from "next/head";
+
+
 // import { Providers } from "./providers";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -16,12 +21,15 @@ export default function RootLayout({ children, authModal }: { children: React.Re
   return (
     <html lang="en">
       {/* <Providers> */}
-        <body className={`${inter.className}`}>
-          <Navbar></Navbar>
-          {authModal}
-          {children}
-          <Footer></Footer>
-        </body>
+      <head>
+        <link href="https://api.fontshare.com/v2/css?f[]=clash-display@1&display=swap" rel="stylesheet"></link>
+      </head>
+      <body className={`${inter.className}`}>
+        <Navbar></Navbar>
+        {authModal}
+        {children}
+        <Footer></Footer>
+      </body>
       {/* </Providers> */}
     </html>
   );
