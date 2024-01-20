@@ -49,7 +49,7 @@ const Navbar = () => {
             </Button>
           </div>
           <div className="flex flex-col items-stretch justify-start w-full h-full p-10 gap-4 ">
-            <Link href="/signin">
+            <Link onClick={toggleDrawer} href="/signin">
               <Button size={"full"} variant={"outline"}>Login</Button>
             </Link>
             <Button variant={"outline"}>Register</Button>
