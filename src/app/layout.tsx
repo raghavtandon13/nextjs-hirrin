@@ -19,12 +19,12 @@ export default function RootLayout({ children, authModal }: { children: React.Re
         <link href="https://api.fontshare.com/v2/css?f[]=clash-display@1&display=swap" rel="stylesheet"></link>
       </head>
       <body className={`${inter.className}`}>
-      <Providers>
-        <Navbar></Navbar>
-        {authModal}
-        {children}
-        <Footer></Footer>
-      </Providers>
+        <Providers>
+          <Navbar></Navbar>
+          {authModal}
+          {children}
+          <Footer></Footer>
+        </Providers>
       </body>
     </html>
   );

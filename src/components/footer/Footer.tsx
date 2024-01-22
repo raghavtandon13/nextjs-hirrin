@@ -5,8 +5,8 @@ import React from "react";
 const Footer = () => {
   return (
     <>
-    <div className="w-full h-max bg-gray-100 border-t border-gray-300 flex flex-col p-10 sm:flex-row dark:bg-background dark:border-gray-700">
-        <div className="flex flex-col flex-1 sm:flex-row">
+      <div className="flex h-max w-full flex-col border-t border-gray-300 bg-gray-100 p-10 dark:border-gray-700 dark:bg-background sm:flex-row">
+        <div className="flex flex-1 flex-col sm:flex-row">
           <div className="flex flex-1 flex-col items-start justify-center">
             <Link href="#">
               <p className="text-gray-700 hover:text-blue-500 dark:text-slate-300">Search for Jobs</p>
@@ -42,7 +42,7 @@ const Footer = () => {
             </Link>
           </div>
         </div>
-        <hr className="w-full h-px my-5 bg-gray-300 sm:hidden" />
+        <hr className="my-5 h-px w-full bg-gray-300 sm:hidden" />
         <div className="flex flex-1 flex-col items-start justify-center sm:items-end">
           <Link href="#">
             <p className="text-gray-700 hover:text-blue-500 dark:text-slate-300">Terms of Service</p>
@@ -59,14 +59,14 @@ const Footer = () => {
           <Link href="#">
             <p className="text-gray-700 hover:text-blue-500 dark:text-slate-300">Feedback Form</p>
           </Link>
-          <div className="flex gap-[2px] my-4 border-2 p-1 rounded-md border-gray-300 sm:my-0">
-          <Github strokeWidth={1} absoluteStrokeWidth/>
-          <Instagram strokeWidth={1} absoluteStrokeWidth/>
-          <Linkedin strokeWidth={1} absoluteStrokeWidth/>
-          <Facebook strokeWidth={1} absoluteStrokeWidth/>
-          <Youtube strokeWidth={1} absoluteStrokeWidth/>
-          <Twitter strokeWidth={1} absoluteStrokeWidth/>
-        </div>
+          <div className="my-4 flex gap-[2px] rounded-md border-2 border-gray-300 p-1 sm:my-0">
+            <Github strokeWidth={1} absoluteStrokeWidth />
+            <Instagram strokeWidth={1} absoluteStrokeWidth />
+            <Linkedin strokeWidth={1} absoluteStrokeWidth />
+            <Facebook strokeWidth={1} absoluteStrokeWidth />
+            <Youtube strokeWidth={1} absoluteStrokeWidth />
+            <Twitter strokeWidth={1} absoluteStrokeWidth />
+          </div>
         </div>
       </div>
     </>

@@ -16,21 +16,21 @@ import CloseModal from "@/components/CloseModal";
 
 const page = () => {
   return (
-    <div className="absolute w-screen bg-[#000000de] h-screen overflow-hidden">
-      <div className="w-full h-full flex flex-col items-center justify-center">
-        <div className="bg-gray-100 border-gray-300 rounded-md">
-          <div className="w-full flex items-center justify-end p-2">
+    <div className="absolute h-screen w-screen overflow-hidden bg-[#000000de]">
+      <div className="flex h-full w-full flex-col items-center justify-center">
+        <div className="rounded-md border-gray-300 bg-gray-100">
+          <div className="flex w-full items-center justify-end p-2">
             <CloseModal />
           </div>
-          <div className="w-full flex flex-col items-center justify-center gap-4 px-10 py-4">
+          <div className="flex w-full flex-col items-center justify-center gap-4 px-10 py-4">
             <Button size={"full"} variant={"outline"}>
-              Login with <span className="font-bold ml-1">Google</span>
+              Login with <span className="ml-1 font-bold">Google</span>
             </Button>
             or
           </div>
           <form className="flex flex-col  items-center justify-center gap-4 rounded-md p-10 pt-0">
-            <input className="border border-gray-300 rounded-md p-2" type="text" placeholder="Email" />
-            <input className="border border-gray-300 rounded-md p-2" type="text" placeholder="Password" />
+            <input className="rounded-md border border-gray-300 p-2" type="text" placeholder="Email" />
+            <input className="rounded-md border border-gray-300 p-2" type="text" placeholder="Password" />
             <Button variant={"outline"} type="submit">
               Login
             </Button>

@@ -24,9 +24,9 @@ export default function Home() {
     <main className={`flex min-h-screen flex-col items-center justify-between pt-[70px] md:flex-row lg:mx-[10%]`}>
       <div className="flex flex-1 flex-col items-center justify-center">
         {/* {apiData ? <h1>{apiData.message.name}</h1> : <p>Loading...</p>} */}
-        <h1 className="font-clash font-black text-[40px] text-center text-gray-800 px-5 lg:text-[8vh] dark:text-slate-300">Your Dream Job</h1>
-        <h1 className="font-clash font-black text-[40px] text-center text-gray-800 lg:text-[8vh] dark:text-slate-300">is Waiting</h1>
-        <h1 className="font-clash font-black text-[40px] text-center text-gray-800 lg:text-[8vh] dark:text-slate-300">For You</h1>
+        <h1 className="px-5 text-center font-clash text-[40px] font-black text-gray-800 dark:text-slate-300 lg:text-[8vh]">Your Dream Job</h1>
+        <h1 className="text-center font-clash text-[40px] font-black text-gray-800 dark:text-slate-300 lg:text-[8vh]">is Waiting</h1>
+        <h1 className="text-center font-clash text-[40px] font-black text-gray-800 dark:text-slate-300 lg:text-[8vh]">For You</h1>
         <div className="flex gap-2">
           <Link href="/signin">
             <Button size={"lg"} variant={"outline"}>
