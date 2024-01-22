@@ -4,14 +4,22 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 async function getData() {
+  const yes = { name: "okbye" };
   const res = await fetch("https://hirrin-backend.vercel.app/api/test2", {
-    body: JSON.stringify({ name: "okbye" }),
+    body: JSON.stringify(yes),
     method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
   });
+  console.log(res);
+  console.log("something");
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }
-  return res.json();
+  const ok = await res.json();
+  console.log(ok);
+  return ok;
 }
 export default async function Home() {
   const data = await getData();
