@@ -1,29 +1,24 @@
-"use client";
 import Image from "next/image";
 import img from "@/assests/pleaseBePatient.png";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import axios from "axios";
 
-export default function Home() {
-  // const [apiData, setApiData] = useState<any>(null);
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await axios.post("https://hirrin-backend.vercel.app/api/test2", { name: "okbye" });
-  //       setApiData(response.data);
-  //     } catch (error) {
-  //       console.error("Error fetching data:", error);
-  //     }
-  //   };
-  //   fetchData();
-  // }, []);
-
+async function getData() {
+  const res = await fetch("https://hirrin-backend.vercel.app/api/test2", {
+    body: JSON.stringify({ name: "okbye" }),
+    method: "POST",
+  });
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+  return res.json();
+}
+export default async function Home() {
+  const data = await getData();
   return (
     <main className={`flex min-h-screen flex-col items-center justify-between pt-[70px] md:flex-row lg:mx-[10%]`}>
       <div className="flex flex-1 flex-col items-center justify-center">
-        {/* {apiData ? <h1>{apiData.message.name}</h1> : <p>Loading...</p>} */}
+        <h1>{data.message.name}</h1>
         <h1 className="px-5 text-center font-clash text-[40px] font-black text-gray-800 dark:text-slate-300 lg:text-[8vh]">Your Dream Job</h1>
         <h1 className="text-center font-clash text-[40px] font-black text-gray-800 dark:text-slate-300 lg:text-[8vh]">is Waiting</h1>
         <h1 className="text-center font-clash text-[40px] font-black text-gray-800 dark:text-slate-300 lg:text-[8vh]">For You</h1>
