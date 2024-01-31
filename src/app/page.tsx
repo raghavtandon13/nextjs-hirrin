@@ -21,6 +21,7 @@ async function getData() {
   console.log(ok);
   return ok;
 }
+
 export default async function Home() {
   const data = await getData();
   return (
