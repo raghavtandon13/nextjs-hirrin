@@ -75,3 +75,11 @@
     @apply bg-background text-foreground;
   }
 }
+.dark .wow {
+  background:
+    url("../assests/Untitled.png"),
+    radial-gradient(circle farthest-corner at 0 0, #000 0%, #a899fb 65%, #732fc9 80%, #c1f1ff 110%) no-repeat,
+    radial-gradient(closest-side at 50% 50%, #732fc9 40%, #000 100%) no-repeat;
+  background-blend-mode: overlay;
+  mix-blend-mode: screen;
+}

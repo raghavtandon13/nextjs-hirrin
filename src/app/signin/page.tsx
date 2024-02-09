@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 "use client";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 
@@ -16,7 +15,14 @@ const page = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data: any) => console.log(data);
+
+  const onSubmit: SubmitHandler<Inputs> = async (data: any) => {
+    const yoyo = await fetch("/api/auth", { method: "POST", body: JSON.stringify(data) });
+    const yoyo2 = await yoyo.json();
+    console.log("res baby", yoyo2.data);
+    return yoyo2;
+  };
+
   return (
     <div className="flex h-screen items-center justify-center border-gray-800 pt-[70px]">
       <div className="flex flex-col items-stretch justify-center gap-4 sm:flex-row">
@@ -25,13 +31,9 @@ const page = () => {
           <h1 className="text-[32px]">Lets Dive In! </h1>
         </div>
         <div className="rounded-md border-gray-300 bg-gray-100 ">
-          <div className="flex w-full flex-col items-center justify-center gap-4 px-10 pb-4 pt-10">
-            <Button size={"full"} variant={"outline"}>
-              Login with <span className="ml-1 font-bold">Google</span>
-            </Button>
-            or
-          </div>
+          <div className="flex w-full flex-col items-center justify-center gap-4 px-10 pb-4 pt-10"></div>
           <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col  items-center justify-center gap-4 rounded-md p-10 pt-0">
+            <h1 className="text-2xl font-medium">Login</h1>
             <input
               {...register("email", {
                 required: "required baby",
@@ -57,12 +59,6 @@ const page = () => {
             <Button variant={"outline"} type="submit">
               Login
             </Button>
-            <p>
-              New to Hirr.in?{" "}
-              <Link className="hover:text-blue-500" href={"#"}>
-                Register Here
-              </Link>
-            </p>
           </form>
         </div>
       </div>

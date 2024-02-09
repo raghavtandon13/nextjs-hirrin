@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
 import { Providers } from "./providers";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,6 +24,8 @@ export default function RootLayout({ children, authModal }: { children: React.Re
           <Navbar></Navbar>
           {authModal}
           {children}
+          <Toaster />
+
           <Footer></Footer>
         </Providers>
       </body>

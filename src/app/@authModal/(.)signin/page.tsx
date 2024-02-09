@@ -1,10 +1,29 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+"use client";
 import React from "react";
-// import { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from "@/components/ui/drawer";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import CloseModal from "@/components/CloseModal";
+import { useForm, SubmitHandler } from "react-hook-form";
+
+type Inputs = {
+  email: string;
+  password: string;
+};
 
 const page = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Inputs>();
+
+  const onSubmit: SubmitHandler<Inputs> = async (data: any) => {
+    const yoyo = await fetch("/api/auth", { method: "POST", body: JSON.stringify(data) });
+    const yoyo2 = await yoyo.json();
+    console.log("res baby", yoyo2.data);
+    return yoyo2;
+  };
+
   return (
     <div className="absolute h-screen w-screen overflow-hidden bg-[#000000de]">
       <div className="flex h-full w-full flex-col items-center justify-center">
@@ -12,24 +31,33 @@ const page = () => {
           <div className="flex w-full items-center justify-end p-2">
             <CloseModal />
           </div>
-          <div className="flex w-full flex-col items-center justify-center gap-4 px-10 py-4">
-            <Button size={"full"} variant={"outline"}>
-              Login with <span className="ml-1 font-bold">Google</span>
-            </Button>
-            or
-          </div>
-          <form className="flex flex-col  items-center justify-center gap-4 rounded-md p-10 pt-0">
-            <input className="rounded-md border border-gray-300 p-2" type="text" placeholder="Email" />
-            <input className="rounded-md border border-gray-300 p-2" type="text" placeholder="Password" />
+          <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col  items-center justify-center gap-4 rounded-md p-10 pt-0">
+            <h1 className="text-2xl font-medium">Login</h1>
+            <input
+              {...register("email", {
+                required: "required baby",
+                minLength: { value: 10, message: "enter 10 baby" },
+                validate: (value) => {
+                  if (!value.includes("@")) {
+                    return "should have an @";
+                  }
+                  return true;
+                },
+              })}
+              className="rounded-md border border-gray-300 p-2"
+              type="text"
+              placeholder="Email"
+            />
+            {errors.email && <p className="text-red-500">{errors.email.message}</p>}
+            <input
+              {...register("password", { required: true, minLength: 8 })}
+              className="rounded-md border border-gray-300 p-2"
+              type="password"
+              placeholder="Password"
+            />
             <Button variant={"outline"} type="submit">
               Login
             </Button>
-            <p>
-              New to Hirr.in?{" "}
-              <Link className="hover:text-blue-500" href={"#"}>
-                Register Here
-              </Link>
-            </p>
           </form>
         </div>
       </div>
