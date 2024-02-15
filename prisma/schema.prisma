@@ -1,20 +1,18 @@
-// prisma/prisma.schema
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
 
 generator client {
   provider = "prisma-client-js"
 }
 
-datasource db {
-  provider     = "mongodb"
-  url          = env("DATABASE_URL")
-  relationMode = "prisma"
-}
-
 model Post {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  title     String
-  subtitle  String
-  desc      String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt   DateTime @default(now())
+  title       String
+  subtitle    String
+  body        String?
+  author      String
+  authorEmail String
 }

@@ -1,13 +1,9 @@
 "use client";
-import { Button } from "@/components/ui/button";
-import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import ClipLoader from "react-spinners/ClipLoader";
+import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 
 type Inputs = {
-  email: string;
-  password: string;
   title: string;
   subtitle: string;
   description: string;
@@ -16,18 +12,20 @@ const Home = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    reset,
+    formState: { errors, isSubmitSuccessful },
   } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = async (data: any) => {
-    const yoyo = await fetch("/api/post", { method: "POST", body: JSON.stringify(data) });
-    const yoyo2 = await yoyo.json();
-    console.log("res baby", yoyo2.data);
-    return yoyo2;
+    await fetch("/api/post", { method: "POST", body: JSON.stringify(data) });
+    if (isSubmitSuccessful) {
+      reset();
+      toast("Event has been created");
+    }
   };
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center text-center">
-      <div className="b-stone-100 my-[10vh] flex flex-col items-center justify-center gap-4 rounded-lg border-2 border-stone-100 bg-stone-50 p-10">
-        <h1 className="text-4xl font-semibold text-stone-600">Add new Job Post</h1>
+    <div className="flex min-h-screen flex-col items-center justify-center text-center">
+      <div className="b-stone-100 flex h-full w-full flex-col items-center justify-center gap-4 rounded-lg border-2 border-stone-100 bg-stone-50 px-10 py-5 sm:my-[80px] sm:w-auto">
+        <h1 className="font-clash text-4xl font-medium text-stone-600">New Job Post</h1>
         <form onSubmit={handleSubmit(onSubmit)} className="flex w-full flex-col items-center justify-center gap-2 rounded-md">
           <h1 className="w-full text-start text-stone-400">Enter title</h1>
           <input
@@ -58,28 +56,23 @@ const Home = () => {
             placeholder="description"
           />
           {errors.description && <p className="w-full text-start text-red-500">{errors.description.message}</p>}
-          <Button variant={"default"} type="submit">
-            Post
-          </Button>
-          {/* <ClipLoader color={"white"} size={15} aria-label="Loading Spinner" data-testid="loader" /> */}
+          <div className="flex items-center justify-center gap-2">
+            <Button variant={"default"} type="submit">
+              Post
+            </Button>
+            <Button
+              onClick={(e) => {
+                e.preventDefault();
+                reset();
+              }}
+              variant={"destructive"}
+            >
+              Reset
+            </Button>
+          </div>
         </form>
       </div>
-      <Button
-        variant="outline"
-        onClick={() =>
-          toast("Event has been created", {
-            description: "Sunday, December 03, 2023 at 9:00 AM",
-            action: {
-              label: "Undo",
-              onClick: () => console.log("Undo"),
-            },
-          })
-        }
-      >
-        Show Toast
-      </Button>
-    </main>
+    </div>
   );
 };
-
 export default Home;
