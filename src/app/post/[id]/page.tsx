@@ -1,7 +1,8 @@
 import CloseModal from "@/components/CloseModal";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { db } from "@/lib/db";
 import { Archive, ScrollText } from "lucide-react";
+import Link from "next/link";
 
 const Post = async ({ params }: { params: { id: string } }) => {
   const id = params.id;
@@ -19,43 +20,42 @@ const Post = async ({ params }: { params: { id: string } }) => {
 
   return (
     <>
-      <div className="flex min-h-screen flex-col items-center justify-center pt-20">
-        {post ? (
-          <>
-            <div className="my-4 flex h-fit w-full flex-col items-start  rounded-lg border-4 border-stone-100 bg-stone-50 p-10 sm:w-[60%]">
-              <div className="relative flex w-full">
-                <div className="absolute right-[-20px] top-[-20px]">
-                  <CloseModal />
-                </div>
-                <div className="flex-[2] ">
-                  <h1 className="text-3xl font-medium">{post.title}</h1>
-                  <h1 className="text-xl font-medium text-gray-700">{post.subtitle}</h1>
-                  <Button size={"icon"} variant={"ghost"}>
-                    <Archive strokeWidth={0.8} />
-                  </Button>
-                  <div className="flex flex-col items-start">
-                    <Button className="mb-[-10px] mt-4 px-0" variant="link">
-                      By {post.author}
-                    </Button>
-                    <small className="font-medium text-gray-700">
-                      {new Date(post.createdAt).toLocaleDateString("en-US", {
-                        year: "numeric",
-                        month: "long",
-                        day: "numeric",
-                      })}
-                    </small>
+      <div className="flex ">
+        <div className="flex min-h-screen flex-[3] flex-col items-center justify-start pt-20">
+          {post ? (
+            <>
+              <div className="my-4 flex h-fit w-full flex-col items-start  rounded-lg border-4 border-stone-100 bg-stone-50 p-10 sm:w-[90%]">
+                <div className="relative flex w-full">
+                  <div className="absolute right-[-20px] top-[-20px]">
+                    <CloseModal />
+                  </div>
+                  <div className="flex-[2] ">
+                    <h1 className="text-6xl font-medium">{post.title}</h1>
+                    <div className=" py-4">
+                      <h1 className="text-slate-500">Location: Mumbai</h1>
+                      <hr />
+                      <h1 className="text-slate-500">Discipline: Banking</h1>
+                      <hr />
+                      <h1 className="text-slate-500">Job Type: Permanent</h1>
+                      <hr />
+                    </div>
                   </div>
                 </div>
-                <div className="flex h-auto flex-[1] items-center justify-end">
-                  <ScrollText strokeWidth={0.6} className="h-[100px] w-[100px]" />
-                </div>
+                <p className="text-md mt-4 max-w-full overflow-hidden text-ellipsis font-medium text-slate-500">{post.body}</p>
               </div>
-              <p className="text-md mt-4 max-w-full overflow-hidden text-ellipsis font-medium text-slate-500">{post.body}</p>
-            </div>
-          </>
-        ) : (
-          <div>loading</div>
-        )}
+            </>
+          ) : (
+            <div>loading</div>
+          )}
+        </div>
+        <div className="flex min-h-screen flex-[1] flex-col items-center justify-start gap-2 pt-24">
+          <Link className={buttonVariants({ variant: "apply" })} href={`/post/${id}/apply`}>
+            Apply Now
+          </Link>
+          <Link className={buttonVariants({ variant: "apply2" })} href={"#"}>
+            Share This Job
+          </Link>
+        </div>
       </div>
     </>
   );
