@@ -22,7 +22,7 @@ const Post = async ({ params }: { params: { id: string } }) => {
     <div className="flex min-h-screen items-start justify-center">
       <div className="flex w-[70%] gap-10">
         <div className=" mt-40 flex-[1] ">
-          <h1 className="text-6xl font-medium">{post.title}</h1>
+          {post && <h1 className="text-6xl font-medium">{post.title}</h1>}
           <div className=" py-4">
             <h1 className="text-slate-500">Location: Mumbai</h1>
             <h1 className="text-slate-500">Discipline: Banking</h1>
