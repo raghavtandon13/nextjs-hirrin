@@ -15,7 +15,7 @@ export default async function Home() {
         <div className="flex gap-2">
           <Link href="/posts/1">
             <Button size={"lg"} variant={"outline"}>
-              {!!user ? 'Post' : 'Login'}
+              {!!user ? 'Search' : 'Login'}
             </Button>
           </Link>
         </div>
