@@ -13,7 +13,7 @@ export default async function Home() {
         <h1 className="text-center font-clash text-[40px] font-black text-gray-800 dark:text-slate-300 lg:text-[8vh]">is Waiting</h1>
         <h1 className="text-center font-clash text-[40px] font-black text-gray-800 dark:text-slate-300 lg:text-[8vh]">For You</h1>
         <div className="flex gap-2">
-          <Link href="/home">
+          <Link href="/posts/1">
             <Button size={"lg"} variant={"outline"}>
               {!!user ? 'Post' : 'Login'}
             </Button>
